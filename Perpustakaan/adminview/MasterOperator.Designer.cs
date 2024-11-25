@@ -77,6 +77,7 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id_siswa, id_user, nis, kelas, alamat, id_user1, nama, role, email, no_telp, username, password });
             dataGridView1.Location = new Point(16, 482);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;

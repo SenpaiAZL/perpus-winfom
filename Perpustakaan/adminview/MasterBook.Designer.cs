@@ -29,7 +29,13 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            textBox6 = new TextBox();
+            id_buku = new DataGridViewTextBoxColumn();
+            judul_buku = new DataGridViewTextBoxColumn();
+            pengarang = new DataGridViewTextBoxColumn();
+            penerbit = new DataGridViewTextBoxColumn();
+            tahun_terbit = new DataGridViewTextBoxColumn();
+            stok = new DataGridViewTextBoxColumn();
+            txtSearch = new TextBox();
             label9 = new Label();
             button10 = new Button();
             button9 = new Button();
@@ -45,31 +51,80 @@
             txtAuthor = new TextBox();
             panel3 = new Panel();
             numStok = new NumericUpDown();
-            ID = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numStok).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = Color.Gray;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id_buku, judul_buku, pengarang, penerbit, tahun_terbit, stok });
             dataGridView1.Location = new Point(14, 374);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(642, 101);
             dataGridView1.TabIndex = 61;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
-            // textBox6
+            // id_buku
             // 
-            textBox6.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox6.Location = new Point(104, 335);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(243, 36);
-            textBox6.TabIndex = 60;
+            id_buku.DataPropertyName = "id_buku";
+            id_buku.HeaderText = "ID Buku";
+            id_buku.Name = "id_buku";
+            id_buku.ReadOnly = true;
+            id_buku.Visible = false;
+            // 
+            // judul_buku
+            // 
+            judul_buku.DataPropertyName = "judul_buku";
+            judul_buku.HeaderText = "Title";
+            judul_buku.Name = "judul_buku";
+            judul_buku.ReadOnly = true;
+            // 
+            // pengarang
+            // 
+            pengarang.DataPropertyName = "pengarang";
+            pengarang.HeaderText = "Author";
+            pengarang.Name = "pengarang";
+            pengarang.ReadOnly = true;
+            // 
+            // penerbit
+            // 
+            penerbit.DataPropertyName = "penerbit";
+            penerbit.HeaderText = "Publisher";
+            penerbit.Name = "penerbit";
+            penerbit.ReadOnly = true;
+            // 
+            // tahun_terbit
+            // 
+            tahun_terbit.DataPropertyName = "tahun_terbit";
+            tahun_terbit.HeaderText = "Release Year";
+            tahun_terbit.Name = "tahun_terbit";
+            tahun_terbit.ReadOnly = true;
+            // 
+            // stok
+            // 
+            stok.DataPropertyName = "stok";
+            stok.HeaderText = "Stock";
+            stok.Name = "stok";
+            stok.ReadOnly = true;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(104, 335);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(243, 36);
+            txtSearch.TabIndex = 60;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // label9
             // 
@@ -93,6 +148,7 @@
             button10.TabIndex = 58;
             button10.Text = "Delete";
             button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
             // 
             // button9
             // 
@@ -106,6 +162,7 @@
             button9.TabIndex = 57;
             button9.Text = "Edit";
             button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
             // 
             // button2
             // 
@@ -118,6 +175,7 @@
             button2.TabIndex = 56;
             button2.Text = "Insert";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // txtPublisher
             // 
@@ -151,9 +209,9 @@
             label7.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Point(318, 115);
             label7.Name = "label7";
-            label7.Size = new Size(173, 30);
+            label7.Size = new Size(170, 30);
             label7.TabIndex = 52;
-            label7.Text = "Release Date";
+            label7.Text = "Release Year";
             // 
             // txtReleaseYear
             // 
@@ -217,12 +275,6 @@
             numStok.Size = new Size(120, 23);
             numStok.TabIndex = 62;
             // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.Visible = false;
-            // 
             // MasterBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -230,7 +282,7 @@
             BackColor = SystemColors.ControlDark;
             Controls.Add(numStok);
             Controls.Add(dataGridView1);
-            Controls.Add(textBox6);
+            Controls.Add(txtSearch);
             Controls.Add(label9);
             Controls.Add(button10);
             Controls.Add(button9);
@@ -257,7 +309,7 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private TextBox textBox6;
+        private TextBox txtSearch;
         private Label label9;
         private Button button10;
         private Button button9;
@@ -273,6 +325,11 @@
         private TextBox txtAuthor;
         private Panel panel3;
         private NumericUpDown numStok;
-        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn id_buku;
+        private DataGridViewTextBoxColumn judul_buku;
+        private DataGridViewTextBoxColumn pengarang;
+        private DataGridViewTextBoxColumn penerbit;
+        private DataGridViewTextBoxColumn tahun_terbit;
+        private DataGridViewTextBoxColumn stok;
     }
 }

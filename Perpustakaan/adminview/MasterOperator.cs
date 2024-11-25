@@ -152,7 +152,7 @@ namespace Perpustakaan
 
                     addSiswa.ExecuteNonQuery();
                     ManageConnection.CloseConn();
-                    MessageBox.Show("Data added6 successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Data added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     ShowData();
                     ClearFields();
@@ -171,7 +171,7 @@ namespace Perpustakaan
 
         public void EditData()
         {
-            if (dataGridView1.CurrentRow.Selected == true)
+            if (dataGridView1.CurrentRow.Selected == true && idUser != null && idSiswa != null)
             {
                 if (!IsDataInvalid())
                 {
