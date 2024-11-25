@@ -6,7 +6,6 @@ namespace Perpustakaan
 {
     public partial class adminLogin : Form
     {
-        public SqlConnection konek = new SqlConnection(connection.connect);
         public SqlCommand command;
         public SqlDataAdapter adapter;
         public DataTable tabel;
@@ -18,9 +17,9 @@ namespace Perpustakaan
 
         private void Log_Click(object sender, EventArgs e)
         {
-            konek.Open();
+            ManageConnection.OpenConn();
             string sql = "SELECT * FROM[user] WHERE username = '" + username.Text + "'AND password = '" + password.Text + "'";
-            command = new SqlCommand(sql, konek);
+            command = new SqlCommand(sql, connection.konek);
             adapter = new SqlDataAdapter(command);
             tabel = new DataTable();  
             adapter.Fill(tabel);
@@ -32,6 +31,7 @@ namespace Perpustakaan
                     reader=command.ExecuteReader();
                     reader.Read();
                     userinfo.info=reader.GetString(1);
+                    ManageConnection.CloseConn();
                     if (dr["role"].ToString() == "admin")
                     {
                         AdminForm form = new AdminForm(this);
@@ -48,8 +48,10 @@ namespace Perpustakaan
             else
             {
                 MessageBox.Show("invalid login please check username and password");
+                ManageConnection.CloseConn();
             }
-            konek.Close();
+
+            
         }
     }
 }
