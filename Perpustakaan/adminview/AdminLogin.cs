@@ -17,40 +17,57 @@ namespace Perpustakaan
 
         private void Log_Click(object sender, EventArgs e)
         {
-            ManageConnection.OpenConn();
-            string sql = "SELECT * FROM[user] WHERE username = '" + username.Text + "'AND password = '" + password.Text + "'";
-            command = new SqlCommand(sql, connection.konek);
-            adapter = new SqlDataAdapter(command);
-            tabel = new DataTable();  
-            adapter.Fill(tabel);
-
-            if (tabel.Rows.Count > 0)
+            try
             {
-                foreach (DataRow dr in tabel.Rows)
+                string sql = "SELECT * FROM[user] WHERE username = '" + username.Text + "'AND password = '" + password.Text + "'";
+                command = new SqlCommand(sql, connection.konek);
+                adapter = new SqlDataAdapter(command);
+                tabel = new DataTable();
+                adapter.Fill(tabel);
+
+                if (tabel.Rows.Count > 0)
                 {
-                    reader=command.ExecuteReader();
-                    reader.Read();
-                    userinfo.info=reader.GetString(1);
+                    foreach (DataRow dr in tabel.Rows)
+                    {
+                        using (SqlConnection conn = new SqlConnection(connection.konek.ConnectionString))
+                        {
+                            conn.Open();
+                            using (SqlCommand command = new SqlCommand(sql, conn))
+                            {
+                                using (SqlDataReader reader = command.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        userinfo.info = reader.GetString(1);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        if (dr["role"].ToString() == "admin")
+                        {
+                            AdminForm form = new AdminForm(this);
+                            form.Show();
+                        }
+                        else if (dr["role"].ToString() == "siswa")
+                        {
+                            SiswaForm form = new SiswaForm(this);
+                            form.Show();
+                        }
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("invalid login please check username and password");
                     ManageConnection.CloseConn();
-                    if (dr["role"].ToString() == "admin")
-                    {
-                        AdminForm form = new AdminForm(this);
-                        form.Show();
-                    }
-                    else if (dr["role"].ToString() == "siswa")
-                    {
-                        SiswaForm form = new SiswaForm(this);
-                        form.Show();
-                    }
-                    this.Hide();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("invalid login please check username and password");
-                ManageConnection.CloseConn();
+                MessageBox.Show("Error : " +  ex.Message);
             }
-
             
         }
     }
