@@ -196,6 +196,7 @@
             button5.TabIndex = 64;
             button5.Text = "Insert";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // textBox6
             // 

@@ -28,31 +28,6 @@ namespace Perpustakaan
 
         }
 
-        private void btnDash_Click(object sender, EventArgs e)
-        {
-            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnDash.Location.Y));
-            dashboard1.BringToFront();
-        }
-
-        private void btnOperator_Click(object sender, EventArgs e)
-        {
-            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnOperator.Location.Y));
-            masterOperator1.BringToFront();
-        }
-
-        private void btnBook_Click(object sender, EventArgs e)
-        {
-            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnBook.Location.Y));
-            masterBook1.BringToFront();
-        }
-
-        private void btnBorrow_Click(object sender, EventArgs e)
-        {
-            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnBorrow.Location.Y));
-            borrowing1.BringToFront();
-        }
-
-
         private void SiswaForm_HelpButtonClicked(object sender, CancelEventArgs e)
         {
 
@@ -61,6 +36,35 @@ namespace Perpustakaan
         private void SiswaForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             adminLogin.Show();
+        }
+
+        private void returning1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnBorrowed.Location.Y));
+            searchBorrowed1.BringToFront();
+        }
+
+        private void btnBorrow_Click(object sender, EventArgs e)
+        {
+            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnReturned.Location.Y));
+            searchReturn1.BringToFront();
+        }
+
+        private void btnOperator(object sender, EventArgs e)
+        {
+            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnSearchBook.Location.Y));
+            search1.BringToFront();
+        }
+
+        private void btnDash_Click(object sender, EventArgs e)
+        {
+            pnlHighlight.Location = (new Point(pnlHighlight.Location.X, btnDash.Location.Y));
+            dashboard1.BringToFront();
         }
 
         private void button6_Click(object sender, EventArgs e)

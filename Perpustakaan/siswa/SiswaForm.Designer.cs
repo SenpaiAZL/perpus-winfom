@@ -30,22 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SiswaForm));
             pnlHighlight = new Panel();
-            btnOperator = new Button();
+            btnSearchBook = new Button();
             button7 = new Button();
             button6 = new Button();
             btnDash = new Button();
-            btnBorrow = new Button();
-            btnBook = new Button();
+            btnReturned = new Button();
+            btnBorrowed = new Button();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             sidePanel = new Panel();
             panel1 = new Panel();
             siswalabel = new Label();
             mainPanel = new Panel();
-            returning1 = new Returning();
-            masterOperator1 = new MasterOperator();
-            masterBook1 = new MasterBook();
-            borrowing1 = new Borrowing();
+            searchReturn1 = new siswa.SearchReturn();
+            searchBorrowed1 = new siswa.SearchBorrowed();
+            search1 = new siswa.SearchBook();
             dashboard1 = new Dashboard();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             sidePanel.SuspendLayout();
@@ -61,21 +60,21 @@
             pnlHighlight.Size = new Size(11, 44);
             pnlHighlight.TabIndex = 12;
             // 
-            // btnOperator
+            // btnSearchBook
             // 
-            btnOperator.BackColor = SystemColors.ControlDarkDark;
-            btnOperator.FlatAppearance.BorderSize = 0;
-            btnOperator.FlatStyle = FlatStyle.Flat;
-            btnOperator.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnOperator.ForeColor = SystemColors.ButtonFace;
-            btnOperator.Location = new Point(11, 232);
-            btnOperator.Margin = new Padding(3, 4, 3, 4);
-            btnOperator.Name = "btnOperator";
-            btnOperator.Size = new Size(269, 44);
-            btnOperator.TabIndex = 13;
-            btnOperator.Text = "Search Book";
-            btnOperator.UseVisualStyleBackColor = false;
-            btnOperator.Click += btnOperator_Click;
+            btnSearchBook.BackColor = SystemColors.ControlDarkDark;
+            btnSearchBook.FlatAppearance.BorderSize = 0;
+            btnSearchBook.FlatStyle = FlatStyle.Flat;
+            btnSearchBook.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearchBook.ForeColor = SystemColors.ButtonFace;
+            btnSearchBook.Location = new Point(11, 232);
+            btnSearchBook.Margin = new Padding(3, 4, 3, 4);
+            btnSearchBook.Name = "btnSearchBook";
+            btnSearchBook.Size = new Size(269, 44);
+            btnSearchBook.TabIndex = 13;
+            btnSearchBook.Text = "Search Book";
+            btnSearchBook.UseVisualStyleBackColor = false;
+            btnSearchBook.Click += btnOperator;
             // 
             // button7
             // 
@@ -124,37 +123,37 @@
             btnDash.UseVisualStyleBackColor = false;
             btnDash.Click += btnDash_Click;
             // 
-            // btnBorrow
+            // btnReturned
             // 
-            btnBorrow.BackColor = SystemColors.ControlDarkDark;
-            btnBorrow.FlatAppearance.BorderSize = 0;
-            btnBorrow.FlatStyle = FlatStyle.Flat;
-            btnBorrow.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBorrow.ForeColor = SystemColors.ButtonHighlight;
-            btnBorrow.Location = new Point(14, 332);
-            btnBorrow.Margin = new Padding(3, 4, 3, 4);
-            btnBorrow.Name = "btnBorrow";
-            btnBorrow.Size = new Size(269, 44);
-            btnBorrow.TabIndex = 7;
-            btnBorrow.Text = "Returned History";
-            btnBorrow.UseVisualStyleBackColor = false;
-            btnBorrow.Click += btnBorrow_Click;
+            btnReturned.BackColor = SystemColors.ControlDarkDark;
+            btnReturned.FlatAppearance.BorderSize = 0;
+            btnReturned.FlatStyle = FlatStyle.Flat;
+            btnReturned.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReturned.ForeColor = SystemColors.ButtonHighlight;
+            btnReturned.Location = new Point(14, 332);
+            btnReturned.Margin = new Padding(3, 4, 3, 4);
+            btnReturned.Name = "btnReturned";
+            btnReturned.Size = new Size(269, 44);
+            btnReturned.TabIndex = 7;
+            btnReturned.Text = "Returned History";
+            btnReturned.UseVisualStyleBackColor = false;
+            btnReturned.Click += btnBorrow_Click;
             // 
-            // btnBook
+            // btnBorrowed
             // 
-            btnBook.BackColor = SystemColors.ControlDarkDark;
-            btnBook.FlatAppearance.BorderSize = 0;
-            btnBook.FlatStyle = FlatStyle.Flat;
-            btnBook.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBook.ForeColor = SystemColors.ButtonHighlight;
-            btnBook.Location = new Point(14, 283);
-            btnBook.Margin = new Padding(3, 4, 3, 4);
-            btnBook.Name = "btnBook";
-            btnBook.Size = new Size(269, 44);
-            btnBook.TabIndex = 6;
-            btnBook.Text = "Borrowed History";
-            btnBook.UseVisualStyleBackColor = false;
-            btnBook.Click += btnBook_Click;
+            btnBorrowed.BackColor = SystemColors.ControlDarkDark;
+            btnBorrowed.FlatAppearance.BorderSize = 0;
+            btnBorrowed.FlatStyle = FlatStyle.Flat;
+            btnBorrowed.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBorrowed.ForeColor = SystemColors.ButtonHighlight;
+            btnBorrowed.Location = new Point(14, 283);
+            btnBorrowed.Margin = new Padding(3, 4, 3, 4);
+            btnBorrowed.Name = "btnBorrowed";
+            btnBorrowed.Size = new Size(269, 44);
+            btnBorrowed.TabIndex = 6;
+            btnBorrowed.Text = "Borrowed History";
+            btnBorrowed.UseVisualStyleBackColor = false;
+            btnBorrowed.Click += btnBook_Click;
             // 
             // pictureBox1
             // 
@@ -181,13 +180,13 @@
             // 
             sidePanel.BackColor = SystemColors.ControlDarkDark;
             sidePanel.Controls.Add(pnlHighlight);
-            sidePanel.Controls.Add(btnOperator);
+            sidePanel.Controls.Add(btnSearchBook);
             sidePanel.Controls.Add(panel1);
             sidePanel.Controls.Add(button7);
             sidePanel.Controls.Add(button6);
             sidePanel.Controls.Add(btnDash);
-            sidePanel.Controls.Add(btnBorrow);
-            sidePanel.Controls.Add(btnBook);
+            sidePanel.Controls.Add(btnReturned);
+            sidePanel.Controls.Add(btnBorrowed);
             sidePanel.Controls.Add(pictureBox1);
             sidePanel.Dock = DockStyle.Left;
             sidePanel.Location = new Point(0, 0);
@@ -222,10 +221,9 @@
             // 
             mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             mainPanel.BackColor = SystemColors.ControlDark;
-            mainPanel.Controls.Add(returning1);
-            mainPanel.Controls.Add(masterOperator1);
-            mainPanel.Controls.Add(masterBook1);
-            mainPanel.Controls.Add(borrowing1);
+            mainPanel.Controls.Add(searchReturn1);
+            mainPanel.Controls.Add(searchBorrowed1);
+            mainPanel.Controls.Add(search1);
             mainPanel.Controls.Add(dashboard1);
             mainPanel.Location = new Point(287, 0);
             mainPanel.Name = "mainPanel";
@@ -233,41 +231,31 @@
             mainPanel.TabIndex = 51;
             mainPanel.Paint += mainPanel_Paint;
             // 
-            // returning1
+            // searchReturn1
             // 
-            returning1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            returning1.BackColor = SystemColors.ControlDark;
-            returning1.Location = new Point(0, 0);
-            returning1.Name = "returning1";
-            returning1.Size = new Size(830, 821);
-            returning1.TabIndex = 4;
+            searchReturn1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            searchReturn1.BackColor = SystemColors.ControlDark;
+            searchReturn1.Location = new Point(-1, 3);
+            searchReturn1.Name = "searchReturn1";
+            searchReturn1.Size = new Size(831, 821);
+            searchReturn1.TabIndex = 3;
             // 
-            // masterOperator1
+            // searchBorrowed1
             // 
-            masterOperator1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            masterOperator1.BackColor = SystemColors.ControlDark;
-            masterOperator1.Location = new Point(0, 0);
-            masterOperator1.Name = "masterOperator1";
-            masterOperator1.Size = new Size(830, 824);
-            masterOperator1.TabIndex = 3;
+            searchBorrowed1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            searchBorrowed1.BackColor = SystemColors.ControlDark;
+            searchBorrowed1.Location = new Point(-12, 0);
+            searchBorrowed1.Name = "searchBorrowed1";
+            searchBorrowed1.Size = new Size(852, 834);
+            searchBorrowed1.TabIndex = 2;
             // 
-            // masterBook1
+            // search1
             // 
-            masterBook1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            masterBook1.BackColor = SystemColors.ControlDark;
-            masterBook1.Location = new Point(0, 0);
-            masterBook1.Name = "masterBook1";
-            masterBook1.Size = new Size(830, 827);
-            masterBook1.TabIndex = 2;
-            // 
-            // borrowing1
-            // 
-            borrowing1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            borrowing1.BackColor = SystemColors.ControlDark;
-            borrowing1.Location = new Point(0, 3);
-            borrowing1.Name = "borrowing1";
-            borrowing1.Size = new Size(830, 824);
-            borrowing1.TabIndex = 1;
+            search1.BackColor = SystemColors.ControlDark;
+            search1.Location = new Point(-12, 3);
+            search1.Name = "search1";
+            search1.Size = new Size(852, 831);
+            search1.TabIndex = 1;
             // 
             // dashboard1
             // 
@@ -301,22 +289,21 @@
 
         #endregion
         private Panel pnlHighlight;
-        private Button btnOperator;
+        private Button btnSearchBook;
         private Button button7;
         private Button button6;
         private Button btnDash;
-        private Button btnBorrow;
-        private Button btnBook;
+        private Button btnReturned;
+        private Button btnBorrowed;
         private PictureBox pictureBox1;
         private Panel panel2;
         private Panel sidePanel;
         private Panel mainPanel;
         private Dashboard dashboard1;
-        private Borrowing borrowing1;
-        private MasterOperator masterOperator1;
-        private MasterBook masterBook1;
-        private Returning returning1;
         private Panel panel1;
         private Label siswalabel;
+        private siswa.SearchBook search1;
+        private siswa.SearchReturn searchReturn1;
+        private siswa.SearchBorrowed searchBorrowed1;
     }
 }

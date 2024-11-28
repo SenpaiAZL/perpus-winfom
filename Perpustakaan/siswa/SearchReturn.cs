@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Perpustakaan
+namespace Perpustakaan.siswa
 {
-    public partial class Returning : UserControl
+    public partial class SearchReturn : UserControl
     {
-        public Returning()
+        public SearchReturn()
         {
             InitializeComponent();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }
